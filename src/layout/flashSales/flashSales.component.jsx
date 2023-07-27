@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/button/button.component";
 
 
@@ -14,7 +15,7 @@ const FlashSales = () => {
           just for you, you can only find then in our shop!
         </p>
         <div className="w-1/2">
-            <Button title={'Shop Now'} type={''}/>
+            <Link to="/products"><Button title={'Shop Now'} type={''}/></Link>
         </div>
         
       </div>

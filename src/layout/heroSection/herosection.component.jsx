@@ -1,4 +1,12 @@
+import { useContext } from "react";
+import { userContext } from "../../context/userContext/userContext";
+import { Link } from "react-router-dom";
+
 const Hero = () => {
+  const {userInfo} = useContext(userContext);
+  const buttonHandler = () => {
+    console.log(userInfo)
+  }
   return (
     <div className=" my-[60px] flex flex-col md:space-x-[10vw] md:flex-row  justify-center  lg:justify-normal">
       {/* Left side Image */}
@@ -27,7 +35,7 @@ const Hero = () => {
         
         {/* Button */}
         <div className="flex space-x-10 items-center ">
-          <button className=" w-[200px] h-[50px] bg-brand flex justify-center items-center text-white font-syne rounded-3xl space-x-2  ">
+        <Link to="/products"><button onClick={buttonHandler} className=" w-[200px] h-[50px] bg-brand flex justify-center items-center text-white font-syne rounded-3xl space-x-2  ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -40,7 +48,7 @@ const Hero = () => {
               />
             </svg>
             <p>Shop Now</p>
-          </button>
+          </button></Link>
           {/* Play button for some reason */}
           <div className="w-[60px] h-[60px] border-2 rounded-full flex justify-center items-center">
             <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-b-[12px] border-b-transparent border-l-brand"></div>

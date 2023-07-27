@@ -1,22 +1,40 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const WhyUsSection = () => {
-    const [toggle, setToggle] = useState(false);
-    const [toggle2, setToggle2] = useState(false);
-    const [toggle3, setToggle3] = useState(false);
+  const [toggle, setToggle] = useState(false);
+  const [toggle2, setToggle2] = useState(false);
+  const [toggle3, setToggle3] = useState(false);
 
-  
   const toggleHandler = () => {
-    setToggle(!toggle)
-  }
-  const toggleHandler2 = ( ) => {
-    setToggle2(!toggle2)
-  }
-  const toggleHandler3 = ( ) => {
-    setToggle3(!toggle3)
-  }
-  
-  
+    setToggle(!toggle);
+  };
+  const toggleHandler2 = () => {
+    setToggle2(!toggle2);
+  };
+  const toggleHandler3 = () => {
+    setToggle3(!toggle3);
+  };
+
+  const parentVariants = {
+    initial: {},
+    animate: {
+      transition: {
+        staggerChildren: 0.3, // Delay between each child animation
+      },
+    },
+  };
+
+  const childVariants = {
+    initial: {
+      opacity: 0,
+      x:-100
+    },
+    animate: {
+      opacity: 1,
+      x: 0
+    },
+  };
 
   return (
     <div className=" my-[60px] flex flex-col md:space-x-[10vw] md:flex-row   ">
@@ -34,13 +52,21 @@ const WhyUsSection = () => {
       {/* Right side */}
       <div className="order-1 md:order-2 flex flex-col space-y-12 items-center md:items-baseline h-full md:mt-[10vh]">
         {/* Hero text/ info */}
-        <div className=" mt-[5vh]  flex flex-col space-y-5">
+        <motion.div className=" mt-[5vh]  flex flex-col space-y-5">
           <h1 className=" text-5xl   text-white font-syne min-w-[270px] max-w-[500px] tracking-wide ">
             Why should you choose us as your partner?
           </h1>
-          <div className="flex flex-col space-y-5 ">
+          <motion.div
+            variants={parentVariants}
+            initial="initial"
+            whileInView="animate"
+            className="flex flex-col space-y-5 "
+          >
             {/* first option */}
-            <div className="flex flex-col space-y-2">
+            <motion.div
+              variants={childVariants} transition={{ duration: 0.5 }}
+              className="flex flex-col space-y-2"
+            >
               <div className="flex justify-between">
                 <h3 className="text-white font-semibold">
                   Remote Light Control
@@ -63,10 +89,22 @@ const WhyUsSection = () => {
                   </svg>
                 </span>
               </div>
-              <p className={(toggle===true) ?  'flex text-secondary text-xs min-w-[270px] max-w-[400px] ':"hidden text-secondary text-xs min-w-[270px] max-w-[400px] "}>It's easier to control brightness with the remote control lamp, so you don't have to go to the light switch</p>
-            </div>
-             {/* second option */}
-             <div className="flex flex-col space-y-2">
+              <p
+                className={
+                  toggle === true
+                    ? "flex text-secondary text-xs min-w-[270px] max-w-[400px] "
+                    : "hidden text-secondary text-xs min-w-[270px] max-w-[400px] "
+                }
+              >
+                It's easier to control brightness with the remote control lamp,
+                so you don't have to go to the light switch
+              </p>
+            </motion.div>
+            {/* second option */}
+            <motion.div
+              variants={childVariants} transition={{ duration: 0.5 }}
+              className="flex flex-col space-y-2"
+            >
               <div className="flex justify-between">
                 <h3 className="text-white font-semibold">
                   Latest and modern design
@@ -89,10 +127,22 @@ const WhyUsSection = () => {
                   </svg>
                 </span>
               </div>
-              <p className={(toggle2===true) ?  'flex text-secondary text-xs min-w-[270px] max-w-[400px] ':"hidden text-secondary text-xs min-w-[270px] max-w-[400px] "}>It's easier to control brightness with the remote control lamp, so you don't have to go to the light switch</p>
-            </div>
+              <p
+                className={
+                  toggle2 === true
+                    ? "flex text-secondary text-xs min-w-[270px] max-w-[400px] "
+                    : "hidden text-secondary text-xs min-w-[270px] max-w-[400px] "
+                }
+              >
+                It's easier to control brightness with the remote control lamp,
+                so you don't have to go to the light switch
+              </p>
+            </motion.div>
             {/* third option */}
-            <div className="flex flex-col space-y-2">
+            <motion.div
+              variants={childVariants} transition={{ duration: 0.5 }}
+              className="flex flex-col space-y-2"
+            >
               <div className="flex justify-between">
                 <h3 className="text-white font-semibold">
                   Saving Electricity and Quality Control
@@ -115,11 +165,19 @@ const WhyUsSection = () => {
                   </svg>
                 </span>
               </div>
-              <p className={(toggle3===true) ?  'flex text-secondary text-xs min-w-[270px] max-w-[400px] ':"hidden text-secondary text-xs min-w-[270px] max-w-[400px] "}>It's easier to control brightness with the remote control lamp, so you don't have to go to the light switch</p>
-            </div>
-            
-          </div>
-        </div>
+              <p
+                className={
+                  toggle3 === true
+                    ? "flex text-secondary text-xs min-w-[270px] max-w-[400px] "
+                    : "hidden text-secondary text-xs min-w-[270px] max-w-[400px] "
+                }
+              >
+                It's easier to control brightness with the remote control lamp,
+                so you don't have to go to the light switch
+              </p>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
         {/* Image */}
         <div className="mt-[5vh] md:mt-0 relative w-[270px] h-[400px] sm:w-[380px] sm:h-[500px] rounded-t-[500px] rounded-b-[80px] md:hidden">

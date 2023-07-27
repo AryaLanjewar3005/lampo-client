@@ -15,12 +15,15 @@ module.exports = {
       xl: '1440px',
     },
     extend: {
+      ringShadow:null,
       colors: {
         'brand': '#ff5c01',
         'secondary' : '#727272',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
